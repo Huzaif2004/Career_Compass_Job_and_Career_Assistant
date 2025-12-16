@@ -1,5 +1,7 @@
 package com.example.prj.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +32,8 @@ public ResponseEntity<?> login(@RequestBody LoginRequest req) {
         return ResponseEntity.status(401).body(result);
     }
 
-    return ResponseEntity.ok(result); // JWT token returned
+   return ResponseEntity.ok(Map.of("token", result));
+
 }
 
 }
