@@ -37,7 +37,7 @@ Used for embeddings and AI-generated responses.
 **MySQL**:
 Stores user data, authentication details, and metadata.
 
-**3️ Technologies Used**
+**3 Technologies Used**
 
 **Backend**: Java 17, Spring Boot 3.2.3
 
@@ -51,7 +51,7 @@ Stores user data, authentication details, and metadata.
 
 **AI APIs**: OpenAI, Hugging Face
 
-**4️ Prerequisites**
+**4 Prerequisites**
 
 Ensure the following are installed:
 
@@ -70,30 +70,30 @@ Git
 git clone https://github.com/Huzaif2004/Career_Compass_Job_and_Career_Assistant.git     
 cd Career_Compass_Job_and_Career_Assistant/prj
 
-**Configure application.properties**
-**Database**
-spring.datasource.url=jdbc:mysql://localhost:3306/career_assistant_db
-spring.datasource.username=root
-spring.datasource.password=your_password
+**Configure application.properties**   
+**Database**   
+spring.datasource.url=jdbc:mysql://localhost:3306/career_assistant_db   
+spring.datasource.username=root   
+spring.datasource.password=your_password   
 
-**Elasticsearch**
-elasticsearch.host=http://localhost:9200
+**Elasticsearch**   
+elasticsearch.host=http://localhost:9200   
 
-**JWT**
-jwt.secret=your-long-secret-key
-jwt.expiration=86400000
+**JWT**   
+jwt.secret=your-long-secret-key  
+jwt.expiration=86400000   
 
-**OpenAI**
-openai.api.key=your-openai-api-key
+**OpenAI**  
+openai.api.key=your-openai-api-key   
 
-**Hugging Face**
-huggingface.api.key=your-huggingface-api-key
+**Hugging Face**   
+huggingface.api.key=your-huggingface-api-key   
 
-**File Upload**
-spring.servlet.multipart.max-file-size=10MB
-spring.servlet.multipart.max-request-size=10MB
+**File Upload**   
+spring.servlet.multipart.max-file-size=10MB     
+spring.servlet.multipart.max-request-size=10MB   
 
-**6 OpenAI API Key Setup**
+**6 OpenAI API Key Setup**   
 
 Go to https://platform.openai.com
 
