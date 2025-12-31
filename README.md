@@ -66,32 +66,33 @@ Ensure the following are installed:
 - Git
 
 **5️ Backend Setup (Spring Boot)**   
-**Clone Repository**       
-git clone https://github.com/Huzaif2004/Career_Compass_Job_and_Career_Assistant.git     
-cd Career_Compass_Job_and_Career_Assistant/prj
+
+- git clone https://github.com/Huzaif2004/Career_Compass_Job_and_Career_Assistant.git
+- cd Career_Compass_Job_and_Career_Assistant/prj
+
 
 **Configure application.properties**   
 **Database**   
-spring.datasource.url=jdbc:mysql://localhost:3306/career_assistant_db   
-spring.datasource.username=root   
-spring.datasource.password=your_password   
+- spring.datasource.url=jdbc:mysql://localhost:3306/career_assistant_db   
+- spring.datasource.username=root   
+- spring.datasource.password=your_password   
 
 **Elasticsearch**   
-elasticsearch.host=http://localhost:9200   
+- elasticsearch.host=http://localhost:9200   
 
 **JWT**   
-jwt.secret=your-long-secret-key  
-jwt.expiration=86400000   
+- jwt.secret=your-long-secret-key  
+- jwt.expiration=86400000   
 
 **OpenAI**  
-openai.api.key=your-openai-api-key   
+- openai.api.key=your-openai-api-key   
 
 **Hugging Face**   
-huggingface.api.key=your-huggingface-api-key   
+- huggingface.api.key=your-huggingface-api-key   
 
 **File Upload**   
-spring.servlet.multipart.max-file-size=10MB     
-spring.servlet.multipart.max-request-size=10MB   
+- spring.servlet.multipart.max-file-size=10MB     
+- spring.servlet.multipart.max-request-size=10MB   
 
 **6 OpenAI API Key Setup**   
 
@@ -146,9 +147,9 @@ mvn spring-boot:run
 http://localhost:8081
 
 **10 Frontend Setup (React)**     
-cd prj/frontend/my-app
-npm install
-npm start
+- cd prj/frontend/my-app
+- npm install
+- npm start
 
 Frontend URL:
 http://localhost:3000
