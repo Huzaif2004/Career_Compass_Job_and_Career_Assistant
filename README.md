@@ -1,50 +1,63 @@
-Career Compass – Job & Career Assistant
+**Career Compass – Job & Career Assistant**
 
-A full-stack AI-powered career assistant platform that helps users analyze resumes, extract skills, match job descriptions, and interact with an intelligent chatbot for personalized career guidance.
+Career Compass is a full-stack, AI-powered career guidance platform that helps users analyze resumes, extract skills, match job descriptions, and interact with an intelligent chatbot for personalized career advice. The system combines semantic search, machine learning embeddings, and a RAG-based chatbot to provide accurate and explainable career insights.
 
-1️⃣ Project Overview
+**1️. System Overview**
 
-Career Compass is a modern career assistant application designed to help students and professionals evaluate their job readiness and improve their applications using AI.
+The platform allows users to upload resumes, compare them with job descriptions, and understand their skill gaps. A Retrieval-Augmented Generation (RAG) chatbot enables users to ask follow-up questions and receive context-aware answers based on their resume and job requirements.
 
-✨ Key Features
+**Core Capabilities**
 
-📄 Resume upload (PDF/DOCX) and text extraction
+Resume parsing and text extraction (PDF/DOCX)
 
-🧠 Automatic skill extraction and embedding generation
+Automatic skill extraction and embeddings
 
-🔍 Job description vs resume matching
+Resume ↔ Job Description matching
 
-💬 AI-powered chatbot using RAG (Retrieval-Augmented Generation)
+RAG-based AI chatbot for career guidance
 
-🔐 Secure user authentication using JWT
+Secure authentication using JWT
 
-⚡ Fast semantic search using Elasticsearch
+Fast semantic retrieval using Elasticsearch
 
-🐳 Fully containerized with Docker
+**2️. Architecture (High Level)**
 
-🛠 Technologies Used
+**Frontend (React)**
+Handles authentication, resume upload, job analysis UI, and chatbot interaction.
 
-Backend: Java 17, Spring Boot 3.2.3
+**Backend (Spring Boot)**
+Manages resume processing, skill extraction, embeddings, matching logic, chatbot orchestration, and security.
 
-Frontend: React 19
+**Elasticsearch**
+Stores resume chunks and embeddings for fast semantic retrieval.
 
-Search & Embeddings: Elasticsearch 8.8.1
+**AI Services (OpenAI / Hugging Face)**
+Used for embeddings and AI-generated responses.
 
-Database: MySQL
+**MySQL**
+Stores user data, authentication details, and metadata.
 
-Authentication: JWT
+**3️ Technologies Used**
 
-AI APIs: OpenAI, Hugging Face
+**Backend**: Java 17, Spring Boot 3.2.3
 
-Containerization: Docker, Docker Compose
+**Frontend**: React 19
 
-2️⃣ Prerequisites
+**Search & Retrieval**: Elasticsearch 8.8.1
 
-Make sure the following are installed:
+**Database**: MySQL
+
+**Authentication**: JWT
+
+**AI APIs**: OpenAI, Hugging Face
+
+**4️ Prerequisites**
+
+Ensure the following are installed:
 
 Java 17+
 
-Node.js 18+ and npm
+Node.js 18+ & npm
 
 Docker & Docker Compose
 
@@ -52,12 +65,12 @@ MySQL (or Dockerized MySQL)
 
 Git
 
-3️⃣ Installation and Setup
-📦 Backend Setup (Spring Boot)
+**5️ Backend Setup (Spring Boot)**
+**Clone Repository**
 git clone https://github.com/Huzaif2004/Career_Compass_Job_and_Career_Assistant.git
 cd Career_Compass_Job_and_Career_Assistant/prj
 
-Configure application.properties
+**Configure application.properties**
 # Database
 spring.datasource.url=jdbc:mysql://localhost:3306/career_assistant_db
 spring.datasource.username=root
@@ -67,263 +80,99 @@ spring.datasource.password=your_password
 elasticsearch.host=http://localhost:9200
 
 # JWT
-jwt.secret=your-long-secret-key-here
+jwt.secret=your-long-secret-key
 jwt.expiration=86400000
 
-# AI APIs
-openai.api.key=your-openai-key
-huggingface.api.key=your-huggingface-key
+# OpenAI
+openai.api.key=your-openai-api-key
 
-# File upload
+# Hugging Face
+huggingface.api.key=your-huggingface-api-key
+
+# File Upload
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
+**6️ OpenAI API Key Setup**
 
-⚠️ Do not commit application.properties (keep it in .gitignore).
+Go to https://platform.openai.com
 
-Build and Run Backend
-mvn clean install
-mvn spring-boot:run
+Create an API key
 
+Add it to:
 
-📍 Backend runs on: http://localhost:8081
+openai.api.key=your-openai-api-key
 
-🎨 Frontend Setup (React)
-cd prj/frontend/my-app
-npm install
-npm start
+Used for:
 
+Embedding generation
 
-📍 Frontend runs on: http://localhost:3000
+AI chatbot responses
 
-🗄 Database Setup (MySQL)
-CREATE DATABASE career_assistant_db;
-
-
-Update credentials in application.properties.
-
-🔍 Elasticsearch Setup
+**7️ Elasticsearch Setup**
+**Recommended (Docker)**
 
 From prj directory:
 
 docker-compose up -d
 
+Elasticsearch will run at:
 
-📍 Elasticsearch runs on: http://localhost:9200
+http://localhost:9200
 
-🐳 Full Docker Setup (Recommended)
-docker-compose up --build
+Verify:
 
-Service	URL
-Backend	http://localhost:8081
+curl http://localhost:9200
 
-Frontend	http://localhost:3000
+Elasticsearch is used for:
 
-Elasticsearch	http://localhost:9200
+Storing resume chunks
 
-MySQL	localhost:3306
-4️⃣ Configuration
+Semantic similarity search
 
-Secrets: Use environment variables for production
+RAG retrieval
 
-File Upload Limit: 10MB
+**8️. Database Setup (MySQL)**
+CREATE DATABASE career_assistant_db;
 
-Logging: Configure via application.properties
+Update credentials in application.properties.
 
-Ports: Backend (8081), Frontend (3000)
+**9️ Run Backend**
+mvn clean install
+mvn spring-boot:run
 
-5️⃣ API Endpoints
-🔐 Authentication
-POST /signup
+**Backend URL:**
 
-Register a new user.
+http://localhost:8081
 
-{
-  "username": "john",
-  "email": "john@email.com",
-  "password": "password123"
-}
+**10 Frontend Setup (React)**
+cd prj/frontend/my-app
+npm install
+npm start
 
+Frontend URL:
+http://localhost:3000
 
-Response
+**11 How RAG Chatbot Works**
 
-{
-  "message": "User registered successfully"
-}
+User asks a question
 
-POST /login
+Relevant resume chunks are retrieved from Elasticsearch
 
-Authenticate and get JWT.
+Retrieved context + user query is sent to OpenAI
 
-{
-  "username": "john",
-  "password": "password123"
-}
+AI generates a personalized, grounded response
 
+This avoids generic answers and improves accuracy.
 
-Response
-
-{
-  "token": "jwt-token-here"
-}
-
-📄 Resume APIs
-POST /api/resume/resume-upload
-
-Upload and process resume.
-
-Headers
-
-Authorization: Bearer <token>
-
-
-Request
-
-Multipart file (PDF/DOCX)
-
-Response
-
-{
-  "message": "success",
-  "userId": 1,
-  "skills": ["Java", "Spring Boot"],
-  "chunks": 5
-}
-
-💬 Chat API
-POST /api/chat
-
-AI career chatbot (RAG-based).
-
-Headers
-
-Authorization: Bearer <token>
-
-
-Request
-
-{
-  "message": "What skills should I improve for backend roles?"
-}
-
-
-Response
-
-{
-  "reply": "You should focus on Docker, Microservices, and AWS."
-}
-
-🔎 Retrieval API
-POST /api/retrieval/topk
-
-Retrieve top-k relevant resume chunks.
-
-{
-  "query": "Spring Boot experience",
-  "userId": 1,
-  "k": 5
-}
-
-
-Response
-
-[
-  {
-    "text": "Worked on Spring Boot microservices...",
-    "score": 0.87
-  }
-]
-
-📊 Analysis APIs
-GET /test-embed
-
-Test embedding generation.
-
-Response
-
-[0.012, -0.034, 0.98, ...]
-
-POST /match
-
-Match job description with resume.
-
-{
-  "jd": "Looking for Java backend developer with Spring Boot experience"
-}
-
-
-Response
-
-{
-  "match_percentage": 78,
-  "matched_skills": ["Java", "Spring Boot"],
-  "missing_skills": ["Docker", "AWS"]
-}
-
-POST /test-chunk
-
-Test resume chunking.
-
-Response
-
-{
-  "total_chunks": 5,
-  "chunks": ["chunk1", "chunk2"]
-}
-
-6️⃣ Usage
+**1️2 Usage Flow**
 
 Sign up / Login
 
 Upload resume
 
-Ask AI career questions
-
 Analyze job descriptions
 
-View skill gaps and suggestions
+Ask career questions via chatbot
 
-Frontend Pages
-
-Login
-
-Signup
-
-Analyze
-
-Ask AI
-
-Career Dashboard
-
-7️⃣ Testing
-Backend
-mvn test
-
-Frontend
-npm test
-
-API Testing
-
-Postman
-
-curl
-
-8️⃣ Deployment
-Production Build
-npm run build
-mvn clean package
-
-Docker Deployment
-docker-compose up --build -d
-
-9️⃣ Contributing
-
-Contributions are welcome!
-
-Fork the repo
-
-Create a new branch
-
-Commit changes
-
-Open a Pull Request
+View skill gaps and improvement suggestions
