@@ -55,15 +55,15 @@ Stores user data, authentication details, and metadata.
 
 Ensure the following are installed:
 
--Java 17+
+- Java 17+
 
--Node.js 18+ & npm
+- Node.js 18+ & npm
 
--Docker & Docker Compose
+- Docker & Docker Compose
 
--MySQL (or Dockerized MySQL)
+- MySQL (or Dockerized MySQL)
 
--Git
+- Git
 
 **5️ Backend Setup (Spring Boot)**   
 **Clone Repository**       
@@ -97,40 +97,40 @@ spring.servlet.multipart.max-request-size=10MB
 
 Go to https://platform.openai.com
 
-Create an API key
+- Create an API key
 
-Add it to:
+- Add it to:
 
 openai.api.key=your-openai-api-key
 
 Used for:
 
-Embedding generation
+- Embedding generation
 
-AI chatbot responses
+- AI chatbot responses
 
 **7 Elasticsearch Setup**
 **Using Docker**
 
-From prj directory:
+**From prj directory**:
 
 docker-compose up -d
 
-Elasticsearch will run at:
+**Elasticsearch will run at**:
 
 http://localhost:9200
 
-Verify:
+**Verify**:
 
 curl http://localhost:9200
 
-Elasticsearch is used for:
+**Elasticsearch is used for**:
 
-Storing resume chunks
+- Storing resume chunks
 
-Semantic similarity search
+- Semantic similarity search
 
-RAG retrieval
+- RAG retrieval
 
 **8. Database Setup (MySQL)**   
 CREATE DATABASE career_assistant_db;    
@@ -155,24 +155,24 @@ http://localhost:3000
 
 **11 How RAG Chatbot Works**
 
-User asks a question
+- User asks a question
 
-Relevant resume chunks are retrieved from Elasticsearch
+- Relevant resume chunks are retrieved from Elasticsearch
 
-Retrieved context + user query is sent to OpenAI
+- Retrieved context + user query is sent to OpenAI
 
-AI generates a personalized, grounded response
+- AI generates a personalized, grounded response
 
-This avoids generic answers and improves accuracy.
+- This avoids generic answers and improves accuracy.
 
 **12 Usage Flow**
 
-Sign up / Login
+- Sign up / Login
 
-Upload resume
+- Upload resume
 
-Analyze job descriptions
+- Analyze job descriptions
 
-Ask career questions via chatbot
+- Ask career questions via chatbot
 
-View skill gaps and improvement suggestions
+- View skill gaps and improvement suggestions
