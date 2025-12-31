@@ -8,17 +8,17 @@ The platform allows users to upload resumes, compare them with job descriptions,
 
 **Core Capabilities**
 
-Resume parsing and text extraction (PDF/DOCX)
+- Resume parsing and text extraction (PDF/DOCX)
 
-Automatic skill extraction and embeddings
+- Automatic skill extraction and embeddings
 
-Resume ↔ Job Description matching
+- Resume ↔ Job Description matching
 
-RAG-based AI chatbot for career guidance
+- RAG-based AI chatbot for career guidance
 
-Secure authentication using JWT
+- Secure authentication using JWT
 
-Fast semantic retrieval using Elasticsearch
+- Fast semantic retrieval using Elasticsearch
 
 **2. Architecture (High Level)**
 
@@ -72,6 +72,7 @@ Ensure the following are installed:
 
 
 **Configure application.properties**   
+
 **Database**   
 - spring.datasource.url=jdbc:mysql://localhost:3306/career_assistant_db   
 - spring.datasource.username=root   
@@ -104,7 +105,7 @@ Go to https://platform.openai.com
 
 openai.api.key=your-openai-api-key
 
-Used for:
+**Used for**:
 
 - Embedding generation
 
@@ -115,7 +116,7 @@ Used for:
 
 **From prj directory**:
 
-docker-compose up -d
+docker -compose up -d
 
 **Elasticsearch will run at**:
 
@@ -151,7 +152,7 @@ http://localhost:8081
 - npm install
 - npm start
 
-Frontend URL:
+**Frontend URL**:
 http://localhost:3000
 
 **11 How RAG Chatbot Works**
