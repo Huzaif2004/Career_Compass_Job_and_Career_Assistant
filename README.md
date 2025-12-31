@@ -55,15 +55,15 @@ Stores user data, authentication details, and metadata.
 
 Ensure the following are installed:
 
-Java 17+
+-Java 17+
 
-Node.js 18+ & npm
+-Node.js 18+ & npm
 
-Docker & Docker Compose
+-Docker & Docker Compose
 
-MySQL (or Dockerized MySQL)
+-MySQL (or Dockerized MySQL)
 
-Git
+-Git
 
 **5️ Backend Setup (Spring Boot)**   
 **Clone Repository**       
