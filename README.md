@@ -2,7 +2,7 @@
 
 Career Compass is a full-stack, AI-powered career guidance platform that helps users analyze resumes, extract skills, match job descriptions, and interact with an intelligent chatbot for personalized career advice. The system combines semantic search, machine learning embeddings, and a RAG-based chatbot to provide accurate and explainable career insights.
 
-**1️. System Overview**
+**1. System Overview**
 
 The platform allows users to upload resumes, compare them with job descriptions, and understand their skill gaps. A Retrieval-Augmented Generation (RAG) chatbot enables users to ask follow-up questions and receive context-aware answers based on their resume and job requirements.
 
@@ -20,21 +20,21 @@ Secure authentication using JWT
 
 Fast semantic retrieval using Elasticsearch
 
-**2️. Architecture (High Level)**
+**2. Architecture (High Level)**
 
-**Frontend (React)**
+**Frontend (React)**:
 Handles authentication, resume upload, job analysis UI, and chatbot interaction.
 
-**Backend (Spring Boot)**
+**Backend (Spring Boot)**:
 Manages resume processing, skill extraction, embeddings, matching logic, chatbot orchestration, and security.
 
-**Elasticsearch**
+**Elasticsearch**:
 Stores resume chunks and embeddings for fast semantic retrieval.
 
-**AI Services (OpenAI / Hugging Face)**
+**AI Services (OpenAI / Hugging Face)**:
 Used for embeddings and AI-generated responses.
 
-**MySQL**
+**MySQL**:
 Stores user data, authentication details, and metadata.
 
 **3️ Technologies Used**
@@ -66,34 +66,34 @@ MySQL (or Dockerized MySQL)
 Git
 
 **5️ Backend Setup (Spring Boot)**
-**Clone Repository**
-git clone https://github.com/Huzaif2004/Career_Compass_Job_and_Career_Assistant.git
+**Clone Repository**    
+git clone https://github.com/Huzaif2004/Career_Compass_Job_and_Career_Assistant.git     
 cd Career_Compass_Job_and_Career_Assistant/prj
 
 **Configure application.properties**
-# Database
+**Database**
 spring.datasource.url=jdbc:mysql://localhost:3306/career_assistant_db
 spring.datasource.username=root
 spring.datasource.password=your_password
 
-# Elasticsearch
+**Elasticsearch**
 elasticsearch.host=http://localhost:9200
 
-# JWT
+**JWT**
 jwt.secret=your-long-secret-key
 jwt.expiration=86400000
 
-# OpenAI
+**OpenAI**
 openai.api.key=your-openai-api-key
 
-# Hugging Face
+**Hugging Face**
 huggingface.api.key=your-huggingface-api-key
 
-# File Upload
+**File Upload**
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
-**6️ OpenAI API Key Setup**
+**6 OpenAI API Key Setup**
 
 Go to https://platform.openai.com
 
@@ -109,8 +109,8 @@ Embedding generation
 
 AI chatbot responses
 
-**7️ Elasticsearch Setup**
-**Recommended (Docker)**
+**7 Elasticsearch Setup**
+**Using Docker**
 
 From prj directory:
 
@@ -132,12 +132,12 @@ Semantic similarity search
 
 RAG retrieval
 
-**8️. Database Setup (MySQL)**
+**8. Database Setup (MySQL)**
 CREATE DATABASE career_assistant_db;
 
 Update credentials in application.properties.
 
-**9️ Run Backend**
+**9 Run Backend**
 mvn clean install
 mvn spring-boot:run
 
@@ -165,7 +165,7 @@ AI generates a personalized, grounded response
 
 This avoids generic answers and improves accuracy.
 
-**1️2 Usage Flow**
+**12 Usage Flow**
 
 Sign up / Login
 
