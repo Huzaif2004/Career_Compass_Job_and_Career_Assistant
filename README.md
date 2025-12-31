@@ -65,8 +65,8 @@ MySQL (or Dockerized MySQL)
 
 Git
 
-**5️ Backend Setup (Spring Boot)**
-**Clone Repository**    
+**5️ Backend Setup (Spring Boot)**   
+**Clone Repository**       
 git clone https://github.com/Huzaif2004/Career_Compass_Job_and_Career_Assistant.git     
 cd Career_Compass_Job_and_Career_Assistant/prj
 
@@ -132,20 +132,20 @@ Semantic similarity search
 
 RAG retrieval
 
-**8. Database Setup (MySQL)**
-CREATE DATABASE career_assistant_db;
+**8. Database Setup (MySQL)**   
+CREATE DATABASE career_assistant_db;    
 
 Update credentials in application.properties.
 
-**9 Run Backend**
-mvn clean install
-mvn spring-boot:run
+**9 Run Backend**   
+mvn clean install   
+mvn spring-boot:run   
 
 **Backend URL:**
 
 http://localhost:8081
 
-**10 Frontend Setup (React)**
+**10 Frontend Setup (React)**     
 cd prj/frontend/my-app
 npm install
 npm start
