@@ -31,7 +31,7 @@ Manages resume processing, skill extraction, embeddings, matching logic, chatbot
 **Elasticsearch**:
 Stores resume chunks and embeddings for fast semantic retrieval.
 
-**AI Services (OpenAI / Hugging Face)**:
+**AI Services (OpenAI)**:
 Used for embeddings and AI-generated responses.
 
 **MySQL**:
@@ -49,7 +49,7 @@ Stores user data, authentication details, and metadata.
 
 **Authentication**: JWT
 
-**AI APIs**: OpenAI, Hugging Face
+**AI APIs**: OpenAI
 
 **4 Prerequisites**
 
@@ -61,7 +61,7 @@ Ensure the following are installed:
 
 - Docker & Docker Compose
 
-- MySQL (or Dockerized MySQL)
+- MySQL 
 
 - Git
 
@@ -86,10 +86,7 @@ Ensure the following are installed:
 - jwt.expiration=86400000   
 
 **OpenAI**  
-- openai.api.key=your-openai-api-key   
-
-**Hugging Face**   
-- huggingface.api.key=your-huggingface-api-key   
+- openai.api.key=your-openai-api-key      
 
 **File Upload**   
 - spring.servlet.multipart.max-file-size=10MB     
