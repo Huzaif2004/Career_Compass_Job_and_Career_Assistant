@@ -7,10 +7,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.net.SocketException;
 import java.net.URI;
 import java.net.http.*;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,34 +26,25 @@ public class EmbeddingService {
     public List<Double> getEmbedding(String text) {
 
         try {
-
+            // Build JSON safely (NO STRING CONCAT)
             ObjectNode body = mapper.createObjectNode();
             body.put("model", MODEL);
-            body.put("input", text);
+            body.put("input", text);   // mapper escapes all invalid characters
 
             String jsonBody = mapper.writeValueAsString(body);
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://api.openai.com/v1/embeddings"))
-                    .timeout(Duration.ofSeconds(30))
                     .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + apiKey)
                     .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
                     .build();
 
-            HttpResponse<String> response = null;
-            int retries = 2;
+            HttpResponse<String> response =
+                    client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            while (retries-- > 0) {
-                try {
-                    response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                    break;
-                } catch (SocketException e) {
-                    if (retries == 0)
-                        throw e;
-                    Thread.sleep(500);
-                }
-            }
+            System.out.println("=== RAW OPENAI RESPONSE ===");
+            System.out.println(response.body());
 
             JsonNode root = mapper.readTree(response.body());
 
@@ -69,12 +58,6 @@ public class EmbeddingService {
             List<Double> vector = new ArrayList<>();
             arr.forEach(v -> vector.add(v.asDouble()));
 
-            // try {
-            // Thread.sleep(350); // 300–500 ms recommended
-            // } catch (InterruptedException e) {
-            // Thread.currentThread().interrupt();
-            // }
-
             return vector;
 
         } catch (Exception e) {
@@ -82,3 +65,4 @@ public class EmbeddingService {
         }
     }
 }
+

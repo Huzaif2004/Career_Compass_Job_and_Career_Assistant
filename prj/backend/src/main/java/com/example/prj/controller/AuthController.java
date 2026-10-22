@@ -1,7 +1,5 @@
 package com.example.prj.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +22,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest req) {
+public ResponseEntity<?> login(@RequestBody LoginRequest req) {
 
     String result = authService.login(req);
 
@@ -32,8 +30,7 @@ public class AuthController {
         return ResponseEntity.status(401).body(result);
     }
 
-   return ResponseEntity.ok(Map.of("token", result));
-
+    return ResponseEntity.ok(result); // JWT token returned
 }
 
 }

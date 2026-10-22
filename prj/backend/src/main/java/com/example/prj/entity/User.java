@@ -26,7 +26,7 @@ public class User {
 
     private String password;
 
-    
+    // 🔹 Store full resume text (can be long)
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String resumeText;
@@ -37,7 +37,7 @@ public class User {
 
     public User() {}
 
-    
+    // getters & setters
 
     public Long getId() {
         return id;

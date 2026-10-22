@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 
 import jakarta.annotation.PostConstruct;
@@ -19,50 +18,42 @@ import jakarta.annotation.PostConstruct;
 public class JwtUtil {
 
     @Value("${jwt.secret}")
-    private String secret;
+    private String secret;   // just a normal long string
 
     private Key key;
 
     @PostConstruct
     public void init() {
+        // use the bytes of the secret to build a strong HMAC key
         this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String generateToken(Long userId, String email) {
+    public String generateToken(String email) {
         return Jwts.builder()
                 .setSubject(email)
-                .claim("userId", userId)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 1 day
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    private Claims parseClaims(String token) {
+    public String extractEmail(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
-                .getBody();
-    }
-
-    public String extractEmail(String token) {
-        return parseClaims(token).getSubject();
-    }
-
-    public Long extractUserId(String token) {
-        Object userId = parseClaims(token).get("userId");
-        if (userId == null) {
-            throw new RuntimeException("JWT does not contain userId");
-        }
-        return Long.valueOf(userId.toString());
+                .getBody()
+                .getSubject();
     }
 
     public boolean isTokenValid(String token) {
         try {
-            parseClaims(token);
+            Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token);
             return true;
-        } catch (JwtException e) {
+        } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
     }

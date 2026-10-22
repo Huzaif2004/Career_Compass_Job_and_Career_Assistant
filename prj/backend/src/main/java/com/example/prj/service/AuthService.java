@@ -45,9 +45,11 @@ public class AuthService {
                 throw new RuntimeException("Incorrect Password");
             }
 
-            return jwtUtil.generateToken(user.getId(),user.getEmail());
+            return jwtUtil.generateToken(user.getEmail());
             
         } catch (RuntimeException e) {
-                        return e.getMessage();           }
+            // ❗ No exception thrown → Controller gets clean message
+            return e.getMessage();   // "User Not Found" or "Incorrect Password"
+        }
     }
 }
