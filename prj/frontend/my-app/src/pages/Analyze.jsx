@@ -32,7 +32,7 @@ const Analyze = () => {
       const res = await api.post("/api/resume/resume-upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-
+      console.log(res);
       setResumeInfo(
         `Resume uploaded successfully. Extracted skills: ${formatSkillList(
           res.data.skills || []

@@ -15,12 +15,18 @@ target/
 .DS_Store
 Thumbs.db
 
-# Environment config files
-prj/src/main/resources/application.properties
-prj/src/main/resources/application.yml
+# Environment config files (secrets; keep application-example.properties tracked)
+**/src/main/resources/application.properties
+**/src/main/resources/application.yml
 *.env
 
 # Node frontend (if React in frontend folder)
 prj/frontend/node_modules/
 prj/frontend/dist/
 prj/frontend/build/
+
+**/docs/
+**/target/
+**/node_modules/
+
+prj/docs/
